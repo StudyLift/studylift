@@ -757,7 +757,7 @@ function Home() {
           <div className="footer-section">
   <h3 className="footer-title">About StudyLift</h3>
   <p className="footer-text">
-    Empowering students with comprehensive exam preparation resources for Grades 7-12.
+    Empowering learners with comprehensive supplementary learning and exam preparation resources for Grades 7-12.
   </p>
   <div className="footer-contact-mini">
     <p>📧 studylift9@gmail.com</p>

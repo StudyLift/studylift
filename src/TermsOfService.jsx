@@ -80,15 +80,15 @@ function TermsOfService() {
         </section>
         
         <section className="legal-section">
-          <h2>8. Contact Information</h2>
-          <p>
-            For questions about these Terms of Service, contact us at:
-            <br />
-            <strong>Email:</strong> legal@examprep.com
-            <br />
-            <strong>Mail:</strong> ExamPrep Legal Department, 123 Education Street, Suite 400, Boston, MA 02108
-          </p>
-        </section>
+  <h2>8. Contact Information</h2>
+  <p>
+    For questions about these Terms of Service, please email us at:
+    <br />
+    <a href="mailto:studylift9@gmail.com" className="email-link">
+      studylift9@gmail.com
+    </a>
+  </p>
+</section>
         
         <div className="legal-actions">
           <button onClick={() => window.print()} className="btn btn-primary">Print Terms</button>
