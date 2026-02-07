@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import TermsOfService from "./TermsOfService.jsx";
-import PrivacyPolicy from "./PrivacyPolicy";
-import Contact from "./Contact";
+import PrivacyPolicy from "./PrivacyPolicy.jsx";
+import Contact from "./Contact.jsx";
 import React, { useState } from 'react';
 import './App.css';
 import { auth } from "./firebase";
@@ -13,6 +13,9 @@ function Home() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  
+  // State for Chemistry dropdown
+  const [showChemistryMenu, setShowChemistryMenu] = useState(false);
 
   const [selectedFiles, setSelectedFiles] = useState({
     notes: null,
@@ -35,6 +38,78 @@ function Home() {
     'Practice Tests': { grade: '', subject: '' },
     'Video Lessons': { grade: '', subject: '' }
   });
+
+  // Shared subjects array to avoid duplication
+  const allSubjects = [
+    "English",
+    "Mathematics", 
+    "Biology",
+    "Chemistry", // Only one Chemistry - in the correct position
+    "Physical Science",
+    "Geography",
+    "History",
+    "Accounting",
+    "Economics"
+  ];
+
+  // Chemistry topics data - SEPARATE from allSubjects
+  const chemistryTopics = [
+    {
+      topic: 'Scientific Processes',
+      subtopics: [
+        'Mathematical requirements',
+        'Planning and conducting investigations',
+        'Recording data',
+        'Basic units and derived units',
+        'Error, accuracy and uncertainty',
+        'Experimental techniques'
+      ]
+    },
+    {
+      topic: 'Matter',
+      subtopics: [
+        'The particle nature of matter',
+        'Atomic structure',
+        'Isotopes',
+        'Groups and periods in the Periodic Table',
+        'Periodicity',
+        'Group properties',
+        'Building blocks of matter',
+        'Ionic bonding and electrovalent bonds',
+        'Molecules and covalent bonds',
+        'Giant covalent structures',
+        'Metallic bonding',
+        'Writing and balancing equations'
+      ]
+    },
+    {
+      topic: 'Materials',
+      subtopics: [
+        'Types of materials',
+        'Building materials',
+        'Cleaning materials',
+        'Nanotechnology'
+      ]
+    },
+    {
+      topic: 'Stoichiometry',
+      subtopics: []
+    },
+    {
+      topic: 'Electrochemistry',
+      subtopics: [
+        'The mole concept',
+        'Mole calculations'
+      ]
+    },
+    {
+      topic: 'Chemical Reactions',
+      subtopics: [
+        'Chemical and physical changes',
+        'Energy of a reaction'
+      ]
+    }
+  ];
 
   const handleFileChange = (type, e) => {
     const file = e.target.files[0];
@@ -114,7 +189,7 @@ function Home() {
     <div className="app">
       <header className="header">
         <div className="container header-container">
-          <div className="logo">ExamPrep</div>
+          <div className="logo">StudyLift</div>
           
           <nav className="nav">
             <div className="dropdown">
@@ -126,11 +201,80 @@ function Home() {
               </div>
             </div>
             
+            {/* Chemistry Dropdown with Topics */}
+            <div 
+              className="dropdown chemistry-dropdown"
+              onMouseEnter={() => setShowChemistryMenu(true)}
+              onMouseLeave={() => setShowChemistryMenu(false)}
+            >
+              <button className="dropdown-toggle">Chemistry</button>
+              {showChemistryMenu && (
+                <div className="dropdown-menu chemistry-menu">
+                  {/* Grade Selection */}
+                  <div className="chemistry-header">
+                    <div className="grade-badge">Grade 10</div>
+                    <h4 className="chemistry-title">Chemistry Topics</h4>
+                  </div>
+                  
+                  <div className="chemistry-topics-list">
+                    {chemistryTopics.map((item, index) => (
+                      <div key={index} className="chemistry-topic-item">
+                        <div className="topic-main" onClick={(e) => {
+                          e.preventDefault();
+                          // Toggle subtopics visibility
+                          const subtopics = e.currentTarget.nextElementSibling;
+                          if (subtopics) {
+                            subtopics.style.display = 
+                              subtopics.style.display === 'none' ? 'block' : 'none';
+                          }
+                        }}>
+                          <span className="topic-icon">📚</span>
+                          <span className="topic-name">{item.topic}</span>
+                          {item.subtopics.length > 0 && (
+                            <span className="topic-arrow">▼</span>
+                          )}
+                        </div>
+                        
+                        {item.subtopics.length > 0 && (
+                          <div className="subtopics-list">
+                            {item.subtopics.map((subtopic, subIndex) => (
+                              <a 
+                                key={subIndex} 
+                                href="#" 
+                                className="subtopic-item"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  alert(`Opening: ${subtopic}`);
+                                }}
+                              >
+                                <span className="subtopic-bullet">•</span>
+                                {subtopic}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="chemistry-footer">
+                    <button className="chemistry-view-btn" onClick={() => alert("View all Chemistry resources")}>
+                      View All Chemistry Resources →
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Other Subjects */}
             <div className="dropdown">
-              <button className="dropdown-toggle">Subjects</button>
+              <button className="dropdown-toggle">Other Subjects</button>
               <div className="dropdown-menu">
-                {['English', 'Mathematics', 'Biology', 'Physical Science', 'Geography', 'History', 'Accounting', 'Economics'].map(subject => (
-                  <a key={subject} href="#" className="dropdown-item">{subject}</a>
+                {allSubjects.map(subject => (
+                  <a key={subject} href="#" className="dropdown-item" onClick={(e) => {
+                    e.preventDefault();
+                    alert(`Selected: ${subject}`);
+                  }}>{subject}</a>
                 ))}
               </div>
             </div>
@@ -164,12 +308,12 @@ function Home() {
       <main className="main-content">
         <div className="container">
           <section className="welcome-section">
-            <h1 className="welcome-title">Prepare smarter for your exams</h1>
-            <p className="welcome-subtitle">
-              Access comprehensive study materials, practice tests, and expert resources 
-              tailored for Grades 7-12.
-            </p>
-          </section>
+  <h1 className="welcome-title">StudyLift: Lift Your Grades, Elevate Your Future</h1>
+  <p className="welcome-subtitle">
+    Access comprehensive study materials, practice tests, and expert resources 
+    tailored for Grades 7-12.
+  </p>
+</section>
 
           <section className="cards-section">
             <h2 className="section-title">Quick Access</h2>
@@ -218,14 +362,9 @@ function Home() {
                           className="filter-select"
                         >
                           <option value="">Select Subject</option>
-                          <option value="English">English</option>
-                          <option value="Mathematics">Mathematics</option>
-                          <option value="Biology">Biology</option>
-                          <option value="Physical Science">Physical Science</option>
-                          <option value="Geography">Geography</option>
-                          <option value="History">History</option>
-                          <option value="Accounting">Accounting</option>
-                          <option value="Economics">Economics</option>
+                          {allSubjects.map(subject => (
+                            <option key={subject} value={subject}>{subject}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -324,14 +463,9 @@ function Home() {
                       onChange={(e) => handleUploadSelection('notes', 'subject', e.target.value)}
                     >
                       <option value="">Select Subject</option>
-                      <option value="English">English</option>
-                      <option value="Mathematics">Mathematics</option>
-                      <option value="Biology">Biology</option>
-                      <option value="Physical Science">Physical Science</option>
-                      <option value="Geography">Geography</option>
-                      <option value="History">History</option>
-                      <option value="Accounting">Accounting</option>
-                      <option value="Economics">Economics</option>
+                      {allSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -406,14 +540,9 @@ function Home() {
                       onChange={(e) => handleUploadSelection('pastPapers', 'subject', e.target.value)}
                     >
                       <option value="">Select Subject</option>
-                      <option value="English">English</option>
-                      <option value="Mathematics">Mathematics</option>
-                      <option value="Biology">Biology</option>
-                      <option value="Physical Science">Physical Science</option>
-                      <option value="Geography">Geography</option>
-                      <option value="History">History</option>
-                      <option value="Accounting">Accounting</option>
-                      <option value="Economics">Economics</option>
+                      {allSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -488,14 +617,9 @@ function Home() {
                       onChange={(e) => handleUploadSelection('images', 'subject', e.target.value)}
                     >
                       <option value="">Select Subject</option>
-                      <option value="English">English</option>
-                      <option value="Mathematics">Mathematics</option>
-                      <option value="Biology">Biology</option>
-                      <option value="Physical Science">Physical Science</option>
-                      <option value="Geography">Geography</option>
-                      <option value="History">History</option>
-                      <option value="Accounting">Accounting</option>
-                      <option value="Economics">Economics</option>
+                      {allSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -570,14 +694,9 @@ function Home() {
                       onChange={(e) => handleUploadSelection('audio', 'subject', e.target.value)}
                     >
                       <option value="">Select Subject</option>
-                      <option value="English">English</option>
-                      <option value="Mathematics">Mathematics</option>
-                      <option value="Biology">Biology</option>
-                      <option value="Physical Science">Physical Science</option>
-                      <option value="Geography">Geography</option>
-                      <option value="History">History</option>
-                      <option value="Accounting">Accounting</option>
-                      <option value="Economics">Economics</option>
+                      {allSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -636,15 +755,15 @@ function Home() {
       <footer className="footer">
         <div className="container footer-container">
           <div className="footer-section">
-            <h3 className="footer-title">About ExamPrep</h3>
-            <p className="footer-text">
-              Empowering students with comprehensive exam preparation resources for Grades 7-12.
-            </p>
-            <div className="footer-contact-mini">
-              <p>📧 support@examprep.com</p>
-              <p>📞 1-800-EXAM-PREP</p>
-            </div>
-          </div>
+  <h3 className="footer-title">About StudyLift</h3>
+  <p className="footer-text">
+    Empowering students with comprehensive exam preparation resources for Grades 7-12.
+  </p>
+  <div className="footer-contact-mini">
+    <p>📧 studylift9@gmail.com</p>
+    <p>📞 +264 81 340 4925</p>
+  </div>
+</div>
           
           <div className="footer-section">
             <h3 className="footer-title">Quick Links</h3>
@@ -676,7 +795,7 @@ function Home() {
           </div>
           
           <div className="footer-bottom">
-            <p className="copyright">© {new Date().getFullYear()} ExamPrep. All rights reserved.</p>
+            <p className="copyright">© {new Date().getFullYear()} StudyLift. All rights reserved.</p>
             <div className="footer-legal-links">
               <Link to="/privacy" className="footer-legal-link">Privacy</Link>
               <span>•</span>
