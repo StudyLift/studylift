@@ -1796,3 +1796,83 @@ img {
     font-weight: bold !important;
   }
 }
+/* =========================================== */
+/* UPDATED MOBILE HEADER (WITHOUT NAVIGATION) */
+/* =========================================== */
+
+@media (max-width: 768px) {
+  /* Header without navigation */
+  .header {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 15px 0 !important;
+    display: block !important;
+  }
+  
+  .header-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    padding: 0 15px !important;
+  }
+  
+  /* Logo styling */
+  .logo {
+    font-size: 1.8rem !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Auth buttons - make them stacked */
+  .auth-buttons {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  /* Input fields */
+  .auth-buttons input {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 14px !important;
+    font-size: 16px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Buttons row */
+  .auth-buttons-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  
+  /* Individual buttons */
+  .auth-buttons button {
+    flex: 1 !important;
+    padding: 14px !important;
+    font-size: 16px !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+  }
+  
+  /* Premium button special */
+  .btn-primary {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53) !important;
+    font-weight: bold !important;
+    border: none !important;
+  }
+}
+
+/* Desktop view - keep side by side */
+@media (min-width: 769px) {
+  .header-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+}

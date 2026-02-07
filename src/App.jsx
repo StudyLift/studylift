@@ -14,9 +14,7 @@ function Home() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   
-  // State for Chemistry dropdown
-  const [showChemistryMenu, setShowChemistryMenu] = useState(false);
-
+    
   const [selectedFiles, setSelectedFiles] = useState({
     notes: null,
     pastPapers: null,
@@ -187,98 +185,11 @@ function Home() {
 
   return (
     <div className="app">
-      <header className="header">
-        <div className="container header-container">
-          <div className="logo">StudyLift</div>
+      <header className="header mobile-nav">  {/* ← Add "mobile-nav" here */}
+  <div className="container header-container">
+    <div className="logo">StudyLift</div>
           
-          <nav className="nav">
-            <div className="dropdown">
-              <button className="dropdown-toggle">Grades</button>
-              <div className="dropdown-menu">
-                {['Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'].map(grade => (
-                  <a key={grade} href="#" className="dropdown-item">{grade}</a>
-                ))}
-              </div>
-            </div>
-            
-            {/* Chemistry Dropdown with Topics */}
-            <div 
-              className="dropdown chemistry-dropdown"
-              onMouseEnter={() => setShowChemistryMenu(true)}
-              onMouseLeave={() => setShowChemistryMenu(false)}
-            >
-              <button className="dropdown-toggle">Chemistry</button>
-              {showChemistryMenu && (
-                <div className="dropdown-menu chemistry-menu">
-                  {/* Grade Selection */}
-                  <div className="chemistry-header">
-                    <div className="grade-badge">Grade 10</div>
-                    <h4 className="chemistry-title">Chemistry Topics</h4>
-                  </div>
-                  
-                  <div className="chemistry-topics-list">
-                    {chemistryTopics.map((item, index) => (
-                      <div key={index} className="chemistry-topic-item">
-                        <div className="topic-main" onClick={(e) => {
-                          e.preventDefault();
-                          // Toggle subtopics visibility
-                          const subtopics = e.currentTarget.nextElementSibling;
-                          if (subtopics) {
-                            subtopics.style.display = 
-                              subtopics.style.display === 'none' ? 'block' : 'none';
-                          }
-                        }}>
-                          <span className="topic-icon">📚</span>
-                          <span className="topic-name">{item.topic}</span>
-                          {item.subtopics.length > 0 && (
-                            <span className="topic-arrow">▼</span>
-                          )}
-                        </div>
-                        
-                        {item.subtopics.length > 0 && (
-                          <div className="subtopics-list">
-                            {item.subtopics.map((subtopic, subIndex) => (
-                              <a 
-                                key={subIndex} 
-                                href="#" 
-                                className="subtopic-item"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  alert(`Opening: ${subtopic}`);
-                                }}
-                              >
-                                <span className="subtopic-bullet">•</span>
-                                {subtopic}
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="chemistry-footer">
-                    <button className="chemistry-view-btn" onClick={() => alert("View all Chemistry resources")}>
-                      View All Chemistry Resources →
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            {/* Other Subjects */}
-            <div className="dropdown">
-              <button className="dropdown-toggle">Other Subjects</button>
-              <div className="dropdown-menu">
-                {allSubjects.map(subject => (
-                  <a key={subject} href="#" className="dropdown-item" onClick={(e) => {
-                    e.preventDefault();
-                    alert(`Selected: ${subject}`);
-                  }}>{subject}</a>
-                ))}
-              </div>
-            </div>
-          </nav>
+          {/* Navigation removed - Only logo and auth buttons remain */}
           
           <div className="auth-buttons">
             <input 
