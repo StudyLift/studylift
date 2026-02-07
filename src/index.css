@@ -27,7 +27,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden; /* Prevents horizontal scroll */
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 h1 {
@@ -64,5 +66,18 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+  }
+  
+  body {
+    display: block !important;
+    place-items: normal !important;
   }
 }

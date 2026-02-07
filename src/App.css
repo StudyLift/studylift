@@ -1251,3 +1251,319 @@ body {
     max-height: 400px;
   }
 }
+/* Base mobile styles */
+html {
+  font-size: 16px; /* Sets base size */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  -webkit-text-size-adjust: 100%; /* Prevents iOS zoom on input */
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Make containers fluid */
+.container {
+  width: 100%;
+  max-width: 100%; /* Allow full width on mobile */
+  padding: 0 16px; /* Add breathing room on sides */
+  box-sizing: border-box; /* Includes padding in width */
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Mobile-first approach */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Slightly smaller text on mobile */
+  }
+  
+  /* Make headings proportional */
+  h1 {
+    font-size: 1.8rem; /* ~25px */
+    line-height: 1.3;
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* ~21px */
+    line-height: 1.3;
+  }
+  
+  /* Adjust your legal page specifically */
+  .legal-page .container {
+    padding: 0 12px;
+  }
+  
+  .legal-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Make buttons larger for touch */
+  button {
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px; /* Even smaller on tiny screens */
+  }
+  
+  .legal-page h1 {
+    font-size: 1.5rem;
+  }
+  
+  .legal-actions {
+    flex-direction: column;
+  }
+  
+  .legal-actions button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Make navigation stack vertically */
+  .navbar, .nav-menu, .nav-links {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  /* Make buttons larger for touch */
+  button, .btn, [role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+  }
+  
+  /* Make inputs larger */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    padding: 12px !important;
+    min-height: 44px !important;
+  }
+  
+  /* Adjust layout for narrow screens */
+  .container {
+    width: 100% !important;
+    padding: 0 16px !important;
+  }
+  
+  /* Stack grade/subject filters vertically */
+  .quick-access, .filter-section {
+    flex-direction: column !important;
+  }
+  
+  .quick-access > *, .filter-section > * {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Adjust spacing */
+  h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px !important;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Hide or adjust less important elements */
+  .tagline {
+    font-size: 1rem !important;
+  }
+}
+/* =========================================== */
+/* MOBILE RESPONSIVE STYLES - PASTE AT BOTTOM */
+/* =========================================== */
+
+/* For tablets and phones (768px and below) */
+@media (max-width: 768px) {
+  /* Make navigation stack vertically */
+  .navbar, .nav-menu, .nav-links, .header-container, 
+  .navigation, [class*="nav"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  
+  /* Make buttons larger for touch */
+  button, .btn, [role="button"], .nav-btn, .login-btn, 
+  .signup-btn, [type="button"], [type="submit"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    margin: 5px 0 !important;
+  }
+  
+  /* Make inputs larger */
+  input, select, textarea, [type="text"], 
+  [type="password"], [type="email"] {
+    font-size: 16px !important;
+    padding: 12px !important;
+    min-height: 44px !important;
+    width: 100% !important;
+  }
+  
+  /* Adjust layout containers */
+  .container, .main-container, .content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Stack horizontal sections */
+  .quick-access, .filter-section, .subject-filters,
+  .button-group, .auth-buttons, .flex-row {
+    flex-direction: column !important;
+  }
+  
+  .quick-access > *, .filter-section > *, 
+  .button-group > *, .auth-buttons > * {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* Adjust text sizes */
+  h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  body, p, span, div {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Fix spacing */
+  .section, .module, .card {
+    margin: 16px 0 !important;
+    padding: 16px !important;
+  }
+}
+
+/* Extra small phones (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px !important;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.3rem !important;
+  }
+  
+  /* Make everything single column */
+  .grid, .columns, .row {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .grid > *, .columns > *, .row > * {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+}
+/* =================================== */
+/* MOBILE NAVIGATION - ADD TO App.css */
+/* =================================== */
+
+@media (max-width: 768px) {
+  /* Target your navigation specifically */
+  .nav-container, .header, .top-nav {
+    flex-wrap: wrap !important;
+    padding: 10px 0 !important;
+  }
+  
+  /* Make "Grades | Chemistry | Other Subjects" stack */
+  .subject-tags, .grade-tags, .nav-links span {
+    display: block !important;
+    margin: 5px 0 !important;
+    padding: 8px 12px !important;
+    background: #f0f0f0 !important;
+    border-radius: 20px !important;
+    width: fit-content !important;
+  }
+  
+  /* Make auth buttons full width and stacked */
+  .auth-buttons, .login-section, .nav-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+  }
+  
+  .auth-buttons button, .nav-buttons button {
+    margin: 8px 0 !important;
+    width: 100% !important;
+  }
+}
+/* ============================== */
+/* PAST PAPERS MOBILE - App.css */
+/* ============================== */
+
+@media (max-width: 768px) {
+  .past-papers, .exam-section, .materials-section {
+    padding: 20px 0 !important;
+  }
+  
+  .filter-options, .grade-selectors {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  select {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .paper-list, .material-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
