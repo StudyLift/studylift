@@ -1,19 +1,17 @@
-// src/firebase.js
+// firebase.js - FINAL CORRECT VERSION
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-// 🔹 Your Firebase configuration
+// COPY EXACTLY from Firebase Console
 const firebaseConfig = {
-  apiKey: "PASTE_YOURS_HERE",
-  authDomain: "PASTE_YOURS_HERE",
-  projectId: "PASTE_YOURS_HERE",
-  storageBucket: "PASTE_YOURS_HERE",
-  messagingSenderId: "PASTE_YOURS_HERE",
-  appId: "PASTE_YOURS_HERE"
+  apiKey: "AIzaSyDvbZwdXRE8F5tz6ZIeTLPqo90GS0mJVC4",
+  authDomain: "examprep-9aa44.firebaseapp.com",
+  projectId: "examprep-9aa44",
+  storageBucket: "examprep-9aa44.firebasestorage.app",
+  messagingSenderId: "519625612438",
+  appId: "1:519625612438:web:4c771b0ecf3aa91f64b6b7"
 };
 
-// 🔹 Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// 🔹 Export Firebase Auth
 export const auth = getAuth(app);

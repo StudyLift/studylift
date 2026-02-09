@@ -1876,3 +1876,17 @@ img {
     align-items: center !important;
   }
 }
+/* ===== USER INFO STYLES ===== */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info span {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  background-color: #e0e7ff;
+  border-radius: 4px;
+  border: 1px solid #c7d2fe;
+}
