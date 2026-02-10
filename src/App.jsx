@@ -4,8 +4,7 @@ import PrivacyPolicy from "./PrivacyPolicy.jsx";
 import Contact from "./Contact.jsx";
 import React, { useState, useEffect } from 'react'; // FIXED: Added useEffect
 import './App.css';
-// Make sure these imports exist
-import { auth } from "./firebase";  // This should match your firebase.js file
+import { auth } from "./firebase";
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
@@ -38,7 +37,8 @@ function Home() {
     'Past Exam Papers': { grade: '', subject: '' },
     'Notes': { grade: '', subject: '' },
     'Practice Tests': { grade: '', subject: '' },
-    'Video Lessons': { grade: '', subject: '' }
+    'Video Lessons': { grade: '', subject: '' },
+    'Access Materials': { grade: '', subject: '' }
   });
 
   // User state
@@ -359,44 +359,39 @@ function Home() {
             </div>
           </section>
 
-          <section className="upload-section">
-            <h2 className="section-title">Upload Study Materials</h2>
-            <p className="section-subtitle">
-              Select grade and subject to categorize your uploads
-            </p>
+          <section className="cards-section">
+            <h2 className="section-title">Upload & Access Materials</h2>
+            <p className="section-subtitle">Share questions or access materials uploaded by other learners</p>
             
-            <div className="upload-flow-guide">
-              <div className="flow-step">
-                <span className="flow-number">1</span>
-                <span className="flow-text">Select Grade & Subject</span>
-              </div>
-              <div className="flow-arrow">→</div>
-              <div className="flow-step">
-                <span className="flow-number">2</span>
-                <span className="flow-text">Choose File Type</span>
-              </div>
-              <div className="flow-arrow">→</div>
-              <div className="flow-step">
-                <span className="flow-number">3</span>
-                <span className="flow-text">Upload File</span>
-              </div>
-            </div>
-            
-            <div className="upload-grid">
-              {/* Upload Notes */}
-              <div className="upload-card">
-                <div className="upload-header">
-                  <div className="upload-icon">📚</div>
-                  <h3 className="upload-title">Upload Notes (PDF)</h3>
+            <div className="cards-grid">
+              {/* Upload Card */}
+              <div className="card">
+                <div className="card-icon">📤</div>
+                <h3 className="card-title">Upload Questions</h3>
+                
+                <div className="upload-flow-guide">
+                  <div className="flow-step">
+                    <span className="flow-number">1</span>
+                    <span className="flow-text">Select Grade & Subject</span>
+                  </div>
+                  <div className="flow-arrow">→</div>
+                  <div className="flow-step">
+                    <span className="flow-number">2</span>
+                    <span className="flow-text">Choose File Type</span>
+                  </div>
+                  <div className="flow-arrow">→</div>
+                  <div className="flow-step">
+                    <span className="flow-number">3</span>
+                    <span className="flow-text">Upload File</span>
+                  </div>
                 </div>
                 
-                <div className="upload-category-selectors">
-                  <div className="category-dropdown">
-                    <label className="category-label">Grade:</label>
+                <div className="card-filters">
+                  <div className="card-dropdown">
                     <select 
-                      className="category-select"
                       value={uploadSelections.notes.grade}
                       onChange={(e) => handleUploadSelection('notes', 'grade', e.target.value)}
+                      className="filter-select"
                     >
                       <option value="">Select Grade</option>
                       <option value="Grade 7">Grade 7</option>
@@ -408,12 +403,11 @@ function Home() {
                     </select>
                   </div>
                   
-                  <div className="category-dropdown">
-                    <label className="category-label">Subject:</label>
+                  <div className="card-dropdown">
                     <select 
-                      className="category-select"
                       value={uploadSelections.notes.subject}
                       onChange={(e) => handleUploadSelection('notes', 'subject', e.target.value)}
+                      className="filter-select"
                     >
                       <option value="">Select Subject</option>
                       {allSubjects.map(subject => (
@@ -423,16 +417,14 @@ function Home() {
                   </div>
                 </div>
                 
-                <p className="upload-description">Share your study notes</p>
-                
-                <div className="upload-status">
+                <div className="card-status">
                   {uploadSelections.notes.grade && uploadSelections.notes.subject ? (
-                    <div className="selection-confirm">
+                    <div className="card-status-active">
                       ✅ Ready for {uploadSelections.notes.grade} - {uploadSelections.notes.subject}
                     </div>
                   ) : (
-                    <div className="selection-required">
-                      ⚠️ Please select grade and subject
+                    <div className="card-status-inactive">
+                      ⚠️ Select grade & subject
                     </div>
                   )}
                 </div>
@@ -440,13 +432,13 @@ function Home() {
                 <label className="file-input-label">
                   <input
                     type="file"
-                    accept=".pdf"
+                    accept=".pdf,.doc,.docx"
                     onChange={(e) => handleFileChange('notes', e)}
                     className="file-input"
                     disabled={!uploadSelections.notes.grade || !uploadSelections.notes.subject}
                   />
-                  <span className={`file-input-button ${(!uploadSelections.notes.grade || !uploadSelections.notes.subject) ? 'disabled' : ''}`}>
-                    Choose PDF File
+                  <span className={`card-access-btn ${(!uploadSelections.notes.grade || !uploadSelections.notes.subject) ? 'disabled' : ''}`}>
+                    Choose File to Upload
                   </span>
                 </label>
                 
@@ -454,23 +446,96 @@ function Home() {
                   <div className="file-details">
                     <p className="file-name">📄 {selectedFiles.notes.name}</p>
                     <p className="file-category">
-                      📍 Category: {uploadSelections.notes.grade} - {uploadSelections.notes.subject}
+                      📍 {uploadSelections.notes.grade} - {uploadSelections.notes.subject}
                     </p>
                   </div>
                 )}
+                
+                <div className="card-stats">
+                  <span className="card-stat">📤 Share with learners</span>
+                  <span className="card-stat">⭐ Help others learn</span>
+                </div>
               </div>
 
-              {/* Upload Past Papers - Similar structure */}
-              {/* ... rest of your upload cards remain the same ... */}
+              {/* Access Materials Card */}
+              <div className="card">
+                <div className="card-icon">📂</div>
+                <h3 className="card-title">Access Materials</h3>
+                <p className="card-description">
+                  Browse and download study materials shared by other learners
+                </p>
+                
+                <div className="card-filters">
+                  <div className="card-dropdown">
+                    <select 
+                      value={quickAccessSelections['Access Materials']?.grade || ''}
+                      onChange={(e) => handleQuickAccessSelection('Access Materials', 'grade', e.target.value)}
+                      className="filter-select"
+                    >
+                      <option value="">Select Grade</option>
+                      <option value="Grade 7">Grade 7</option>
+                      <option value="Grade 8">Grade 8</option>
+                      <option value="Grade 9">Grade 9</option>
+                      <option value="Grade 10">Grade 10</option>
+                      <option value="Grade 11">Grade 11</option>
+                      <option value="Grade 12">Grade 12</option>
+                    </select>
+                  </div>
+                  
+                  <div className="card-dropdown">
+                    <select 
+                      value={quickAccessSelections['Access Materials']?.subject || ''}
+                      onChange={(e) => handleQuickAccessSelection('Access Materials', 'subject', e.target.value)}
+                      className="filter-select"
+                    >
+                      <option value="">Select Subject</option>
+                      {allSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="card-status">
+                  {quickAccessSelections['Access Materials']?.grade && quickAccessSelections['Access Materials']?.subject ? (
+                    <div className="card-status-active">
+                      ✅ {quickAccessSelections['Access Materials'].grade} - {quickAccessSelections['Access Materials'].subject}
+                    </div>
+                  ) : (
+                    <div className="card-status-inactive">
+                      ⚠️ Select grade & subject
+                    </div>
+                  )}
+                </div>
+                
+                <button 
+                  className="card-access-btn"
+                  onClick={() => handleCardClick('Access Materials')}
+                  disabled={!quickAccessSelections['Access Materials']?.grade || !quickAccessSelections['Access Materials']?.subject}
+                >
+                  Browse Materials
+                </button>
+                
+                <div className="file-types-list">
+                  <p className="file-type-item">📚 Study Notes</p>
+                  <p className="file-type-item">📄 Past Papers</p>
+                  <p className="file-type-item">🖼️ Diagrams & Images</p>
+                  <p className="file-type-item">🎧 Audio Notes</p>
+                </div>
+                
+                <div className="card-stats">
+                  <span className="card-stat">📁 100+ files</span>
+                  <span className="card-stat">👥 50+ contributors</span>
+                </div>
+              </div>
             </div>
             
             <div className="upload-instructions">
-              <h3>📝 How to upload:</h3>
+              <h3>📝 How to use:</h3>
               <ol>
-                <li><strong>Step 1:</strong> Select Grade (7-12)</li>
-                <li><strong>Step 2:</strong> Select Subject (Math, Science, etc.)</li>
-                <li><strong>Step 3:</strong> Choose file type (Notes, Past Papers, etc.)</li>
-                <li><strong>Step 4:</strong> Upload button will activate when grade & subject are selected</li>
+                <li><strong>Upload Questions:</strong> Share your study materials with the community by selecting grade, subject, and file.</li>
+                <li><strong>Access Materials:</strong> Browse and download resources uploaded by other learners for your grade and subject.</li>
+                <li><strong>Contribute:</strong> The more you share, the more materials become available for everyone!</li>
               </ol>
             </div>
           </section>

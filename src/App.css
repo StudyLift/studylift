@@ -655,188 +655,6 @@ body {
 .footer-legal-link:hover {
   color: white;
 }
-/* ===== ADD THESE STYLES TO THE END OF YOUR APP.CSS FILE ===== */
-
-/* Upload Flow Guide */
-.upload-flow-guide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background-color: #f0f9ff;
-  border-radius: 1rem;
-  border: 2px solid #e0f2fe;
-}
-
-.flow-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.flow-number {
-  width: 40px;
-  height: 40px;
-  background-color: #4f46e5;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-.flow-text {
-  font-size: 0.9rem;
-  color: #1f2937;
-  font-weight: 500;
-}
-
-.flow-arrow {
-  font-size: 1.5rem;
-  color: #6b7280;
-}
-
-/* Upload Card Enhancements */
-.upload-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.upload-category-selectors {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.category-dropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.category-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #1f2937;
-}
-
-.category-select {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  background-color: white;
-  font-size: 0.9rem;
-  color: #1f2937;
-  cursor: pointer;
-}
-
-.category-select:focus {
-  outline: none;
-  border-color: #4f46e5;
-  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
-}
-
-/* Upload Status */
-.upload-status {
-  margin: 0.75rem 0;
-  min-height: 24px;
-}
-
-.selection-confirm {
-  background-color: #d1fae5;
-  color: #065f46;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.85rem;
-  text-align: center;
-  border: 1px solid #a7f3d0;
-}
-
-.selection-required {
-  background-color: #fef3c7;
-  color: #92400e;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-size: 0.85rem;
-  text-align: center;
-  border: 1px solid #fde68a;
-}
-
-/* File Details */
-.file-details {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background-color: #f8fafc;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-}
-
-.file-category {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-top: 0.25rem;
-  font-style: italic;
-}
-
-/* Disabled Button */
-.file-input-button.disabled {
-  background-color: #d1d5db;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.file-input-button.disabled:hover {
-  background-color: #d1d5db;
-  transform: none;
-}
-
-/* Upload Instructions */
-.upload-instructions {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background-color: #f8fafc;
-  border-radius: 1rem;
-  border: 1px solid #e5e7eb;
-}
-
-.upload-instructions h3 {
-  margin-bottom: 1rem;
-  color: #1f2937;
-}
-
-.upload-instructions ol {
-  margin-left: 1.5rem;
-  color: #6b7280;
-}
-
-.upload-instructions li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .upload-flow-guide {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .flow-arrow {
-    transform: rotate(90deg);
-  }
-  
-  .upload-category-selectors {
-    grid-template-columns: 1fr;
-  }
-}
 /* ===== ENHANCED QUICK ACCESS CARDS ===== */
 
 /* Cards Section with dropdowns */
@@ -1078,179 +896,221 @@ body {
 .filter-select::-webkit-scrollbar-thumb:hover {
   background: #4338ca;
 }
-/* ===== CHEMISTRY DROPDOWN ===== */
+/* ===== ENHANCED UPLOAD & ACCESS CARDS ===== */
 
-.chemistry-menu {
-  min-width: 500px;
-  padding: 0;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+/* Upload flow guide inside card */
+.card .upload-flow-guide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background-color: #f0f9ff;
+  border-radius: 0.5rem;
+  border: 1px solid #e0f2fe;
 }
 
-.chemistry-header {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+.card .flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.card .flow-number {
+  width: 30px;
+  height: 30px;
+  background-color: #4f46e5;
   color: white;
-  padding: 15px 20px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 10px;
-}
-
-.grade-badge {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.chemistry-title {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.chemistry-topics-list {
-  max-height: 500px;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-.chemistry-topic-item {
-  margin-bottom: 5px;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.topic-main {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 15px;
-  background: #f8fafc;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.topic-main:hover {
-  background: #f1f5f9;
-}
-
-.topic-icon {
-  font-size: 16px;
-}
-
-.topic-name {
-  flex: 1;
-  font-weight: 600;
-  font-size: 14px;
-  color: #1f2937;
-}
-
-.topic-arrow {
-  font-size: 12px;
-  color: #6b7280;
-  transition: transform 0.2s;
-}
-
-.topic-main:hover .topic-arrow {
-  transform: rotate(180deg);
-}
-
-.subtopics-list {
-  background: white;
-  padding: 10px 15px;
-  border-top: 1px solid #e5e7eb;
-  display: none; /* Hidden by default */
-}
-
-.subtopic-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 0;
-  color: #4b5563;
-  text-decoration: none;
-  font-size: 13px;
-  transition: color 0.2s;
-  border-bottom: 1px solid #f3f4f6;
-}
-
-.subtopic-item:last-child {
-  border-bottom: none;
-}
-
-.subtopic-item:hover {
-  color: #4f46e5;
-  padding-left: 5px;
-}
-
-.subtopic-bullet {
-  color: #4f46e5;
+  justify-content: center;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 0.9rem;
 }
 
-.chemistry-footer {
-  padding: 15px;
-  background: #f9fafb;
-  border-top: 1px solid #e5e7eb;
+.card .flow-text {
+  font-size: 0.75rem;
+  color: #1f2937;
+  font-weight: 500;
   text-align: center;
 }
 
-.chemistry-view-btn {
-  background: #4f46e5;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s;
-  width: 100%;
+.card .flow-arrow {
+  font-size: 1rem;
+  color: #6b7280;
 }
 
-.chemistry-view-btn:hover {
-  background: #4338ca;
+/* File details inside card */
+.card .file-details {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
 }
 
-/* Scrollbar */
-.chemistry-topics-list::-webkit-scrollbar {
-  width: 6px;
+.card .file-name {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+  word-break: break-all;
 }
 
-.chemistry-topics-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.card .file-category {
+  font-size: 0.75rem;
+  color: #4f46e5;
+  font-style: italic;
 }
 
-.chemistry-topics-list::-webkit-scrollbar-thumb {
-  background: #c7d2fe;
-  border-radius: 3px;
+/* File types list for Access card */
+.file-types-list {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
 }
 
-.chemistry-topics-list::-webkit-scrollbar-thumb:hover {
-  background: #a5b4fc;
+.file-type-item {
+  font-size: 0.85rem;
+  color: #6b7280;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* Mobile Responsive */
+.file-type-item:last-child {
+  border-bottom: none;
+}
+
+/* Card-specific adjustments for upload section */
+.cards-section .section-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.cards-section .section-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Make sure all cards in the second section have consistent size */
+.cards-grid .card {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adjust card content to fill space properly */
+.card-description {
+  flex-grow: 0;
+  margin-bottom: 1rem;
+}
+
+.card-filters {
+  flex-grow: 0;
+}
+
+.card-status {
+  flex-grow: 0;
+}
+
+.card-access-btn {
+  flex-grow: 0;
+}
+
+.card-stats, .file-types-list, .file-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Disabled button state */
+.card-access-btn.disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.card-access-btn.disabled:hover {
+  background-color: #d1d5db;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Upload instructions at bottom */
+.upload-instructions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  grid-column: 1 / -1; /* Span full width */
+}
+
+.upload-instructions h3 {
+  margin-bottom: 1rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+.upload-instructions ol {
+  margin-left: 1.5rem;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.upload-instructions li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive for Upload/Access Cards */
 @media (max-width: 768px) {
-  .chemistry-menu {
-    position: fixed;
-    top: 60px;
-    left: 10px;
-    right: 10px;
-    min-width: auto;
-    max-width: calc(100vw - 20px);
+  .card .upload-flow-guide {
+    flex-direction: column;
+    gap: 0.5rem;
   }
   
-  .chemistry-topics-list {
-    max-height: 400px;
+  .card .flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .cards-grid .card {
+    min-height: auto;
+  }
+  
+  .upload-instructions {
+    padding: 1rem;
   }
 }
+
+/* Adjust grid for the new section */
+@media (min-width: 769px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* First 4 cards (Quick Access) */
+  .cards-section:nth-of-type(2) .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Second set (Upload & Access) - only 2 cards */
+  .cards-section:nth-of-type(3) .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* Base mobile styles */
 html {
   font-size: 16px; /* Sets base size */
@@ -1352,7 +1212,7 @@ img {
   
   /* Make inputs larger */
   input, select, textarea {
-    font-size: 16px !important; /* Prevents iOS zoom */
+    font-size: 16px !important;
     padding: 12px !important;
     min-height: 44px !important;
   }
